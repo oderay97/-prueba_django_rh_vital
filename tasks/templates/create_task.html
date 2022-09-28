@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Crear Orden</h1>
+
+{{error}}
+<form action="/create_task/" method="POST">
+  {% csrf_token %}
+{% load widget_tweaks %} 
+ <div class="form-group mt-4"> 
+  {% render_field form.title class="form-control" placeholder="Título de la orden" type="text" %} 
+</div> 
+  
+<div class="form-group mt-4"> 
+  {% render_field form.description type="text" class="form-control" placeholder="Liste su menú para ser atendido" %} 
+</div> 
+
+<div class="form-check form-switch">
+   {% render_field form.important type="checkbox" role="switch" id="flexSwitchCheckDefault" %} 
+  <label class="form-check-label" for="flexSwitchCheckDefault">Si marca esta casilla es porque su orden estará en Entrega Rápida se le cobrara 5.99$ adicional a su orden</label>
+</div> 
+
+   <button class="btn btn-primary mt-2 mb-4">
+    Crear orden
+  </button>
+</form>
+{% endblock %}

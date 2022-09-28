@@ -1,0 +1,29 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="container">
+  <h1>Signup</h1>
+
+  {{error}}
+
+  <form action="/signup/" method="POST">
+    {% csrf_token %} 
+    {% comment %} {{form.as_p}} {% endcomment %}
+
+      {% load widget_tweaks %} 
+  <div class="form-group mt-4"> 
+  {% render_field form.username class="form-control" placeholder="Ingresa tu Usuario" type="text" %} 
+  </div> 
+
+  <div class="form-group mt-4"> 
+  {% render_field form.password1 class="form-control" placeholder="Ingresa tu Contraseña" type="password" %} 
+</div> 
+
+
+  <div class="form-group mt-4"> 
+  {% render_field form.password2 class="form-control" placeholder="Confirma tu Contraseña" type="password" %} 
+</div> 
+
+    <button class="btn btn-primary mt-4">Registrarse</button>
+  </form>
+</div>
+{% endblock %}

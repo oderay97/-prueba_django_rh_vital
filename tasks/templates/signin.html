@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Bienvenido a Delicias Panamá🖐🏼</h1>
+
+<p>
+{{error}}
+</p>
+
+<form action="/signin/" method="POST">
+  {% csrf_token %}
+  {% comment %} {{form.as_p}} {% endcomment %}
+
+  {% load widget_tweaks %} 
+    {% load widget_tweaks %} 
+  <div class="form-group mt-4"> 
+  {% render_field form.username class="form-control" placeholder="Ingresa tu Usuario" type="text" %} 
+  </div> 
+
+  <div class="form-group mt-4"> 
+  {% render_field form.password class="form-control" placeholder="Ingresa tu Contraseña" type="password" %} 
+</div> 
+
+  <button class="btn btn-success mt-4">
+   Entrar
+  </button>
+</form>
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html' %} {% block content %}
+
+<h1 class="text-center"><strong><em>Ordenes</em></strong></h1>
+
+{% for task in tasks %}
+
+<div class="row">
+
+<div class="col-md-6" style="width: 15rem;">
+</div>
+  
+<div class="col-md-6 card text-bg-light mt-4">
+{% comment %}  {% endcomment %}
+  <div class="card-body">
+  {% if task.important %}
+    <h5 class="card-title"><strong class="text-danger">{{task.title}}:</strong> Su pedido esta en Entrega Rápida</h5>
+     <p class="card-text"> <em>5.99$ de Entrega Rápida</em></p>
+    {% else %}
+    <h5 class="card-title"> <strong class="text-success">{{task.title}}:</strong> Su pedido esta en Recogido en Tienda</h5>
+    {% endif %}
+    <p class="card-text"> <em>{{task.description}}</em></p>
+    <a href="{% url 'task_detail' task.id %}" class="btn btn-primary">Detalle de orden</a>
+  </div>
+
+   <div class="card-footer text-muted">
+      {{task.datecompleted|date:'M j Y:i'}}
+  </div>
+
+</div>
+
+  
+
+</div>
+
+{% endfor %}
+
+{% endblock %}
